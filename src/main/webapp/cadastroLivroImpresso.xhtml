@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+
+	<ui:composition template="/WEB-INF/comum/template.xhtml">
+		<ui:define name="corpo">	
+
+			<h:form id="formLivros" prependId="false" enctype="multipart/form-data">
+				<h3>Cadastro de livros impressos</h3>
+				<h:messages globalOnly="true" />
+				<h:panelGrid columns="3">
+					Titulo: 
+					<h:inputText value="#{livroImpressoBean.livroImpresso.titulo}" 
+						label="Titulo" id="titulo" required="true">
+						<f:validateLength minimum="3" />
+					</h:inputText>
+					<h:message for="titulo" />
+					Descrição: 
+					<h:inputText value="#{livroImpressoBean.livroImpresso.descricao}" 
+						label="Descrição" id="descricao"/>
+					<h:message for="descricao" />
+					Nr. páginas: 
+					<h:inputText value="#{livroImpressoBean.livroImpresso.numeroPaginas}" 
+						label="Nr. páginas" id="numeroPaginas"/>
+					<h:message for="numeroPaginas" />
+					ISBN: 
+					<h:inputText value="#{livroImpressoBean.livroImpresso.isbn}" 
+						label="ISBN" id="isbn"/>
+					<h:message for="isbn" />
+					Editora: 
+					<h:selectOneMenu value="#{livroImpressoBean.livroImpresso.editora}" 
+						label="Editora" id="editora">
+						<f:selectItem itemLabel="--- selecione a editora ---" noSelectionOption="true" />
+						<f:selectItems value="#{editoraBean.editoras}" var="editora" itemValue="#{editora}" itemLabel="#{editora.nome}" />
+					</h:selectOneMenu> 
+					<h:message for="editora" />
+					Autor:
+					<h:selectOneMenu value="#{livroImpressoBean.autor}" 
+						label="Autor" id="autor">
+						<f:selectItem itemLabel="--- selecione o autor ---" />
+						<f:selectItems value="#{autorBean.autores}" var="autor" itemValue="#{autor}" itemLabel="#{autor.nome}"/>
+					</h:selectOneMenu>
+					<h:message for="autor" />
+					Imagem da capa:
+					<h:inputFile value="#{livroImpressoBean.imagemCapa}" id="imagemCapa"/>
+					<h:message for="imagemCapa"/>
+					Valor: 
+					<h:inputText value="#{livroImpressoBean.livroImpresso.valor}" 
+						label="Valor" id="valor"/>
+					<h:message for="valor" />
+					Quantidade em estoque:
+					<h:inputText value="#{livroImpressoBean.livroImpresso.quantidadeEmEstoque}" 
+						label="Quantidade em estoque" id="quantidadeEmEstoque"/>
+					<h:message for="quantidadeEmEstoque" />
+					Altura: 
+					<h:inputText value="#{livroImpressoBean.livroImpresso.altura}" 
+						label="Altura" id="altura"/>
+					<h:message for="altura" />
+					Largura: 
+					<h:inputText value="#{livroImpressoBean.livroImpresso.largura}" 
+						label="Largura" id="largura"/>
+					<h:message for="largura" />
+					Peso: 
+					<h:inputText value="#{livroImpressoBean.livroImpresso.peso}" 
+						label="Peso" id="peso"/>
+					<h:message for="peso" />
+								
+					<h:commandButton action="#{livroImpressoBean.salvar()}" value="salvar" />
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

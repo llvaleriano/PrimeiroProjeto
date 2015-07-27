@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+	Esse texto não vai ser inserido no template
+	<ui:composition template="/WEB-INF/comum/template.xhtml">
+		<ui:define name="corpo">	
+			<h:form>
+				<h3>Cadastro de autores</h3>
+				<h:panelGrid columns="2">
+					Nome: <h:inputText value="#{autorBean.autor.nome}"/> <br/>
+					E-mail: <h:inputText value="#{autorBean.autor.email}"/> <br/>
+					<h:inputHidden value="#{autorBean.autor.id}"/>
+					<h:commandButton value="salvar" action="#{autorBean.salvar()}"/>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+	...Nem esse!
+</h:body>
+</html>

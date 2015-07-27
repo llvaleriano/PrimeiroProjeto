@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head></h:head>      
+<h:body>
+	
+	<ui:composition template="WEB-INF/comum/template.xhtml">
+		<ui:define name="corpo">	
+			<h:form>
+				Autor:
+				<h:selectOneMenu value="#{combosAutorLivroBean.autor}">
+					<f:selectItem itemLabel="--- selecione o autor ---" />
+					<f:selectItems value="#{autorBean.autores}" var="autor" 
+						itemValue="#{autor}" itemLabel="#{autor.nome}">
+					</f:selectItems>
+					<f:ajax render="comboLivro"/>
+				</h:selectOneMenu>
+				
+				Livros do autor:
+				<h:selectOneMenu value="#{combosAutorLivroBean.livro}" id="comboLivro">
+					<f:selectItem itemLabel="--- selecione o livro ---" />
+					<f:selectItems value="#{combosAutorLivroBean.livros}" var="livro" 
+						itemValue="#{livro}" itemLabel="#{livro.titulo}">
+					</f:selectItems>
+				</h:selectOneMenu>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+	<ui:composition template="/WEB-INF/comum/template.xhtml">
+		<ui:define name="corpo">	
+
+			<h3>
+				<h:outputText value="#{detalheLivroBean.livro.titulo}"/>
+			</h3>
+			<h:form>	
+				<table>
+					<tr>
+						<td rowspan="7">
+							<img src="#{detalheLivroBean.livro.urlImagemCapa}" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">#{detalheLivroBean.livro.descricao}</td>
+					</tr>
+					<tr>
+						<td>Nr. de páginas</td>
+						<td>#{detalheLivroBean.livro.numeroPaginas}</td>
+					</tr>
+					<tr>
+						<td>ISBN</td>
+						<td>#{detalheLivroBean.livro.isbn}</td>
+					</tr>
+					<tr>
+						<td>Editora</td>
+						<td>#{detalheLivroBean.livro.editora.nome}</td>
+					</tr>
+					<tr>
+						<td>Autor</td>
+						<td>
+							<h:dataTable value="#{detalheLivroBean.livro.autores}" var="autor">
+								<h:column>
+									<h:outputText value="#{autor.nome}" />
+								</h:column>
+							</h:dataTable>
+						</td>
+					</tr>
+					<tr>
+						<td>Valor</td>
+						<td>
+							<h:outputText value="#{detalheLivroBean.livro.valor}">
+								<f:convertNumber type="currency"/>
+							</h:outputText>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<h:commandButton value="comprar" action="#{detalheLivroBean.adicionarItemCompra()}" />
+						</td>
+					</tr>
+				</table>
+			</h:form>
+			
+			<hr/>
+			
+			<h:dataTable value="#{detalheLivroBean.itensCompra}" var="carrinho">
+				<h:column>
+					<h:outputText value="#{carrinho.quantidade}"/> - 
+					<h:outputText value="#{carrinho.livro.titulo}"/>
+				</h:column>
+			</h:dataTable>
+				
+			</ui:define>
+		</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>
+		<ui:insert name="tituloPagina">Curso Java - Dissemine</ui:insert>
+	</title>
+	<style type="text/css">
+	
+		* {
+			font-family:sans-serif;
+			margin:0;
+			padding:0;
+		}
+		
+		#geral {
+			/**width:800px; /** Colocando-a novamente, voltamos a ter um layout fixo! **/
+			border:1px solid white;
+			margin:2 auto;
+		}
+		
+		#cabecalho h1 {
+			padding:10px;
+			color:#FFF;
+		}
+		
+		#esquerda {
+			width:197px;
+			padding:3px;
+			float:left;
+		}
+		
+		#conteudo {
+			margin:0 205px;
+		}
+		
+		#rodape {
+			padding:10px;
+			color:#000;
+			text-align:center;
+		}
+		#rodape a {color:#FFF;}
+	</style>
+</h:head>      
+
+<h:body>
+	<div id="geral">
+		<div id="#cabecalho">
+			<h1>Curso Java - Dissemine</h1>
+		</div>
+		
+		<div id="esquerda">
+			<a href="cadastroAutor.jsf">Cadastrar autor</a><br/>
+			<a href="listaAutores.jsf">Listar autores</a><br/>
+			<a href="cadastroEditora.jsf">Cadastrar editora</a><br/>
+			<a href="listaEditoras.jsf">Listar editoras</a><br/>
+			<a href="cadastroLivroImpresso.jsf">Cadastrar livro impresso</a><br/>
+			<a href="listaLivros.jsf">Lista de livros</a><br/>
+			<a href="combosAutorLivro.jsf">Combos</a><br/>
+		</div>
+		
+		<div id="conteudo">
+			<ui:insert name="corpo" />
+		</div>
+		
+		<div id="rodape">
+			dissemine.com.br
+		</div>
+	</div>
+</h:body>
+</html>

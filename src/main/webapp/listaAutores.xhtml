@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="/WEB-INF/comum/template.xhtml">
+		<ui:define name="corpo">	
+
+			<h:form>
+				<h3>Lista de autores</h3>
+				<h:dataTable value="#{autorBean.autores}" var="autor">
+					<h:column>
+						<f:facet name="header">Autor</f:facet>
+						#{autor.nome}
+					</h:column>
+					<h:column>
+						<f:facet name="header">E-mail</f:facet>
+						#{autor.email}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Ações</f:facet>
+						<h:commandLink action="cadastroAutor.jsf" value="alterar">
+							<f:param name="id" value="#{autor.id}"/>
+						</h:commandLink>
+						| 
+						<h:commandLink action="#{autorBean.excluir(autor)}" value="excluir" />
+					</h:column>
+				</h:dataTable>
+				<br/>
+				<h:commandButton value="&lt;&lt; Primeira página" action="#{autorBean.primeiraPagina()}"/>
+				<h:commandButton value="&lt; Página anterior" action="#{autorBean.paginaAnterior()}"/>
+				<h:commandButton value="Próxima página &gt;" action="#{autorBean.proximaPagina()}"/>
+				<h:commandButton value="Última página &gt;&gt;" action="#{autorBean.ultimaPagina()}"/>
+				<br/><br/>
+				<h:outputText value="#{autorBean.totalRegistros}"/> Autores. 
+				Página <h:outputText value="#{autorBean.paginaAtual}"/> de 
+				<h:outputText value="#{autorBean.totalPaginas}"/>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+	<a href="index.html">inicio</a>
+</h:body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head></h:head>      
+<h:body>
+	<ui:composition template="/WEB-INF/comum/template.xhtml">
+		<ui:define name="corpo">	
+
+			<h3>livros impressos</h3>
+			<h:form>
+				Pesquisar livros
+				<f:ajax event="keyup" render="resultadoPesquisa">
+					<h:inputText value="#{listagemLivrosBean.titulo}" />
+				</f:ajax>
+				
+				<h:commandButton value="pesquisar" 
+					action="#{listagemLivrosBean.carregarLivros()}"/>
+			
+			<br/><br/>
+			
+			<h:dataTable value="#{listagemLivrosBean.livros}" 
+				id="resultadoPesquisa" var="livro" width="500">
+				<h:column>
+					<f:facet name="header">Titulo</f:facet>
+					<h:link outcome="detalheLivro">
+						<f:param name="id" value="#{livro.id}" />
+						#{livro.titulo}
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Valor</f:facet>
+					<h:outputText value="#{livro.valor}">
+						<f:convertNumber type="currency" currencySymbol="R$"/>
+					</h:outputText> 
+				</h:column>		
+			</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
