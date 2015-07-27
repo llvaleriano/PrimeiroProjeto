@@ -38,6 +38,7 @@ public class Autor {
 	
 	public void mostrarDetalhes() {
 		System.out.println(nome);
+
 		System.out.println(email);
 	}
 
